@@ -1,0 +1,3 @@
+This plugin was created by Godpuppet as he added the first few unique features to the server.
+There are a few commands that were developed as a kind of alias for different things: newcharacter was created to start a new character by resetting all of a player's data, but Godpuppet wasn't really a developer, so he simply executed all of the commands required, either from console or from the sender of the command.
+What you see here still runs on the server at the time of writing, although a lot of it is very messy and will need redoing at some point or other, perhaps rewriting entirely. Rollinfo will need to be discarded once we move towards a more D&D-like way of doing things.
