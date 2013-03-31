@@ -1,0 +1,17 @@
+name: Gildorym
+authors: [Lucariatias, godpuppet]
+version: 2.1.5
+main: com.gildorym.Gildorym
+commands:
+    newcharacter:
+        usage: /<command>
+        description: Resets all character data
+    surname:
+        usage: /<command> [surname]
+        description: Sets your surname
+    rollinfo:
+        usage: /<command>
+        description: Shows your roll info
+    roll:
+        usage: /<command> [roll]
+        description: Rolls, broadcasting the result to players within 32 blocks
