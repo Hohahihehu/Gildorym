@@ -6,6 +6,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import com.earth2me.essentials.Essentials;
+
 public class SurnameCommand implements CommandExecutor {
 
 	@Override
@@ -15,11 +17,9 @@ public class SurnameCommand implements CommandExecutor {
 			for (String arg : args) {
 				surname += arg + " ";
 			}
-			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "pex user " + sender.getName() + " suffix \" " + surname + "\"");
+			Essentials essentials = (Essentials) Bukkit.getServer().getPluginManager().getPlugin("Essentials");
+			essentials.getUserMap().getUser(sender.getName()).setNickname(essentials.getUserMap().getUser(sender.getName()).getNickname() + " " + surname);
 			sender.sendMessage(ChatColor.AQUA + "Your surname has been changed to " + surname + ".");
-		} else {
-			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "pex user " + sender.getName() + " suffix \"\"");
-			sender.sendMessage(ChatColor.AQUA + "Your surname has been removed.");
 		}
 		return true;
 	}
