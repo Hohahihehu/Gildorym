@@ -1,8 +1,9 @@
 package com.gildorymrp.gildorym;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,64 +14,46 @@ public class RollCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		Integer amount = 1;
+		Integer maxRoll = 20;
+		Integer plus = 0;
+		
 		String rollString = args[0];
-		if (!rollString.contains("d")) {
-			rollString = "1d" + rollString;
+		if (rollString.contains("d")) {
+			amount = Integer.parseInt(rollString.split("d")[0]);
 		}
-		
-		if (rollString.startsWith("d")) {
-			rollString = "1" + rollString;
+		if (amount >= 100) {
+			sender.sendMessage(ChatColor.RED + "You can't roll that many times!");
+			return true;
 		}
-		
-		if (rollString.endsWith("d")) {
-			sender.sendMessage(ChatColor.RED + "You must specify the number of sides.");
+		String secondHalf = rollString.split("d")[1];
+		if (rollString.contains("+")) {
+			plus = Integer.parseInt(secondHalf.split("+")[1]);
+			maxRoll = Integer.parseInt(secondHalf.split("+")[0]);
+		} else {
+			maxRoll = Integer.parseInt(secondHalf);
 		}
-		
-		try {
-			Integer amount = Integer.parseInt(rollString.split("d")[0]);
-			Integer maxRoll;
-			Integer plus;
-			if (rollString.split("d")[1].contains("+")) {
-				maxRoll = Integer.parseInt(rollString.split("d")[1].split("+")[0]);
-				plus = Integer.parseInt(rollString.split("d")[1].split("+")[1]);
-			} else {
-				maxRoll = Integer.parseInt(rollString.split("d")[1]);
-				plus = 0;
-			}
-			Integer[] rolls = new Integer[amount];
-			Random random = new Random();
-			for (int i = 0; i < amount; ++i) {
-				rolls[i] = random.nextInt(maxRoll) + 1;
-			}
-			
-			String rollMessage = "(";
-			Integer rollTotal = 0;
-			
-			for (int i = 0; i < amount - 1; ++i) {
-				rollMessage += rolls[i].toString() + " + ";
-				rollTotal += rolls[i];
-			}
-			
-			rollMessage += rolls[rolls.length - 1];
-			rollTotal += rolls[rolls.length - 1];
-			
-			if (plus >= 1) {
-				rollMessage += " + " + plus;
-				rollTotal += plus;
-			}
-			
-			rollMessage += ") = " + rollTotal.toString();
-			
-			for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-				if (((Player) sender).getWorld() == player.getWorld()) {
-					if (((Player) sender).getLocation().distance(player.getLocation()) <= 32) {
-						player.sendMessage(ChatColor.GRAY + ((Player) sender).getDisplayName() + " rolled " + rollString);
-						player.sendMessage(ChatColor.GRAY + rollMessage);
-					}
+		Set<Integer> rolls = new HashSet<Integer>();
+		Random random = new Random();
+		for (int i = 0; i < amount; i++) {
+			rolls.add(random.nextInt(maxRoll));
+		}
+		String output = ChatColor.GRAY + "(";
+		Integer rollTotal = 0;
+		for (Integer roll : rolls) {
+			output += roll;
+			output += "+";
+			rollTotal += roll;
+		}
+		output += plus + ") = " + rollTotal;
+		if (sender instanceof Player) {
+			for (Player player : ((Player) sender).getWorld().getPlayers()) {
+				if (player.getLocation().distance(((Player) sender).getLocation()) <= 16) {
+					player.sendMessage(output);
 				}
 			}
-		} catch (NumberFormatException exception) {
-			sender.sendMessage(ChatColor.RED + "Failed to parse the roll.");
+		} else {
+			sender.sendMessage(output);
 		}
 		return true;
 	}

@@ -1,6 +1,6 @@
 name: Gildorym
 authors: [Lucariatias, godpuppet]
-version: 2.1.5
+version: 2.1.6
 main: com.gildorym.Gildorym
 commands:
     newcharacter:
