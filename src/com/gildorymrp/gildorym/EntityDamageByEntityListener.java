@@ -1,4 +1,4 @@
-package com.gildorym;
+package com.gildorymrp.gildorym;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package com.gildorym;
+package com.gildorymrp.gildorym;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
