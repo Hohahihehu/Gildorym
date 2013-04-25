@@ -19,14 +19,17 @@ public class RollCommand implements CommandExecutor {
 		Integer plus = 0;
 		
 		String rollString = args[0];
+		String secondHalf;
 		if (rollString.contains("d")) {
 			amount = Integer.parseInt(rollString.split("d")[0]);
+			secondHalf = rollString.split("d")[1];
+		} else {
+			secondHalf = args[0];
 		}
 		if (amount >= 100) {
 			sender.sendMessage(ChatColor.RED + "You can't roll that many times!");
 			return true;
 		}
-		String secondHalf = rollString.split("d")[1];
 		if (rollString.contains("+")) {
 			plus = Integer.parseInt(secondHalf.split("+")[1]);
 			maxRoll = Integer.parseInt(secondHalf.split("+")[0]);
@@ -36,7 +39,7 @@ public class RollCommand implements CommandExecutor {
 		Set<Integer> rolls = new HashSet<Integer>();
 		Random random = new Random();
 		for (int i = 0; i < amount; i++) {
-			rolls.add(random.nextInt(maxRoll));
+			rolls.add(random.nextInt(maxRoll) + 1);
 		}
 		String output = ChatColor.GRAY + "(";
 		Integer rollTotal = 0;
