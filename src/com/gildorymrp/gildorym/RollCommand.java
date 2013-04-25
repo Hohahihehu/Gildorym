@@ -52,6 +52,7 @@ public class RollCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			for (Player player : ((Player) sender).getWorld().getPlayers()) {
 				if (player.getLocation().distance(((Player) sender).getLocation()) <= 16) {
+					player.sendMessage(ChatColor.BLUE + sender.getName() + ChatColor.GRAY + "/" + ChatColor.BLUE + ((Player) sender).getDisplayName() + ChatColor.GRAY + " rolled " + ChatColor.YELLOW + amount + "d" + maxRoll + "+" + plus);
 					player.sendMessage(output);
 				}
 			}
