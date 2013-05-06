@@ -31,10 +31,14 @@ public class RollCommand implements CommandExecutor {
 			return true;
 		}
 		if (rollString.contains("+")) {
-			plus = Integer.parseInt(secondHalf.split("+")[1]);
-			maxRoll = Integer.parseInt(secondHalf.split("+")[0]);
+			plus = Integer.parseInt(secondHalf.split("\\+")[1]);
+			maxRoll = Integer.parseInt(secondHalf.split("\\+")[0]);
 		} else {
 			maxRoll = Integer.parseInt(secondHalf);
+		}
+		if (maxRoll <= 0) {
+			sender.sendMessage(ChatColor.RED + "You can't roll a zero or negative number!");
+			return true;
 		}
 		Set<Integer> rolls = new HashSet<Integer>();
 		Random random = new Random();
@@ -48,6 +52,7 @@ public class RollCommand implements CommandExecutor {
 			output += "+";
 			rollTotal += roll;
 		}
+		rollTotal += plus;
 		output += plus + ") = " + rollTotal;
 		if (sender instanceof Player) {
 			for (Player player : ((Player) sender).getWorld().getPlayers()) {

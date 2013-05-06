@@ -11,10 +11,10 @@ import org.bukkit.command.CommandSender;
 //import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 
-import com.gildorym.basicchar.BasicChar;
-import com.gildorym.basicchar.CharacterClass;
-import com.gildorym.charactercards.CharacterCards;
-import com.gildorym.charactercards.Race;
+import com.gildorymrp.charactercards.GildorymCharacterCards;
+import com.gildorymrp.charactercards.Race;
+import com.gildorymrp.gildorymclasses.CharacterClass;
+import com.gildorymrp.gildorymclasses.GildorymClasses;
 
 public class RollInfoCommand implements CommandExecutor {
 
@@ -28,14 +28,14 @@ public class RollInfoCommand implements CommandExecutor {
 		}
 
 		//Heroes heroes = (Heroes) Bukkit.getServer().getPluginManager().getPlugin("Heroes");
-		BasicChar basicChar = (BasicChar) Bukkit.getServer().getPluginManager().getPlugin("BasicChar");
-		CharacterCards characterCards = (CharacterCards) Bukkit.getServer().getPluginManager().getPlugin("CharacterCards");
+		GildorymClasses gildorymClasses = (GildorymClasses) Bukkit.getServer().getPluginManager().getPlugin("GildorymClasses");
+		GildorymCharacterCards gildorymCharacterCards = (GildorymCharacterCards) Bukkit.getServer().getPluginManager().getPlugin("GildorymCharacterCards");
 
 		if (player != null) {
 			//HeroClass heroClass = heroes.getCharacterManager().getHero(player).getHeroClass();
 			//Integer heroLevel = Integer.valueOf(heroes.getCharacterManager().getHero(player).getLevel(heroClass));
-			CharacterClass characterClass = basicChar.classes.get(player.getName());
-			Integer level = basicChar.levels.get(player.getName()) * 2;
+			CharacterClass characterClass = gildorymClasses.classes.get(player.getName());
+			Integer level = gildorymClasses.levels.get(player.getName()) * 2;
 
 			Double meleeAttack = 0.0D;
 			Double meleeDefence = 0.0D;
@@ -142,34 +142,34 @@ public class RollInfoCommand implements CommandExecutor {
 				magicDefence += 4;
 			}
 
-			if (characterCards.getCharacterCards().get(player.getName()).getRace() == Race.DWARF) {
+			if (gildorymCharacterCards.getCharacterCards().get(player.getName()).getRace() == Race.DWARF) {
 				magicAttack -= 2;
 			}
 			
-			if (characterCards.getCharacterCards().get(player.getName()).getRace() == Race.ELF) {
+			if (gildorymCharacterCards.getCharacterCards().get(player.getName()).getRace() == Race.ELF) {
 				rangedAttack += 2;
 				reflex += 2;
 			}
 			
-			if (characterCards.getCharacterCards().get(player.getName()).getRace() == Race.GNOME) {
+			if (gildorymCharacterCards.getCharacterCards().get(player.getName()).getRace() == Race.GNOME) {
 				meleeAttack -= 2;
 				rangedAttack -= 2;
 			}
 			
-			if (characterCards.getCharacterCards().get(player.getName()).getRace() == Race.HALFLING) {
+			if (gildorymCharacterCards.getCharacterCards().get(player.getName()).getRace() == Race.HALFLING) {
 				reflex += 2;
 				rangedAttack += 2;
 				meleeAttack -= 2;
 			}
 			
-			if (characterCards.getCharacterCards().get(player.getName()).getRace() == Race.HALFORC) {
+			if (gildorymCharacterCards.getCharacterCards().get(player.getName()).getRace() == Race.HALFORC) {
 				meleeAttack += 2;
 				rangedAttack += 2;
 				magicAttack -= 4;
 				magicDefence -= 2;
 			}
 
-			/*if (characterCards.getCharacterCards().get(player.getName()).getRace() == Race.DROW) {
+			/*if (gildorymCharacterCards.getCharacterCards().get(player.getName()).getRace() == Race.DROW) {
 				Block block = ((Player)sender).getWorld().getBlockAt(((Player)sender).getLocation());
 
 				if (block.getLightLevel() <= 7) {
