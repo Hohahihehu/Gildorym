@@ -75,7 +75,7 @@ public class RollInfoCommand implements CommandExecutor {
 			} else if (level == 3) {
 				BAB_avg = 2; 
 				BAB_poor = 1;
-			} else if ({level == 4) {
+			} else if (level == 4) {
 				BAB_avg = 3; 
 				BAB_poor = 2;
 			} else if (level == 5) {
@@ -195,7 +195,7 @@ public class RollInfoCommand implements CommandExecutor {
 				rangedAttack += (3 + BAB_avg);
 				rangedDefence += (3 + BAB_good);
 				magicAttack = 0.0D;
-				magicDefense += (1 + BAB_poor);
+				magicDefence += (1 + BAB_poor);
 				reflex += (0.5 * level);
 				if ((player.getInventory().getBoots() == null) && (player.getInventory().getLeggings() == null) && (player.getInventory().getChestplate() == null) && (player.getInventory().getHelmet() == null)) {
 					meleeDefence += (0.25 * level);
