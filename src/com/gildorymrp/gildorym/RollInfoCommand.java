@@ -340,16 +340,68 @@ public class RollInfoCommand implements CommandExecutor {
 
 			//WOOD_SWORD
 			if (player.getItemInHand().getType() == Material.getMaterial(268)) {
+				meleeAttack += 1.0D;
+			}
+			
+			//STONE_SWORD
+			if (player.getItemInHand().getType() == Material.getMaterial(272)) {
 				meleeAttack += 2.0D;
 			}
 			
-			//WOOD_PICKAXE
-			if (player.getItemInHand().getType() == Material.getMaterial(270)) {
+			//IRON_SWORD
+			if (player.getItemInHand().getType() == Material.getMaterial(267)) {
+				meleeAttack += 3.0D;
+			}
+			
+			//DIAMOND_SWORD
+			if (player.getItemInHand().getType() == Material.getMaterial(276)) {
+				meleeAttack += 5.0D;
+			}
+			
+			//GOLDEN_SWORD
+			if (player.getItemInHand().getType() == Material.GOLD_SWORD){
 				meleeAttack += 2.0D;
+				magicAttack += 3.0D;
 			}
 			
 			//WOOD_AXE
 			if (player.getItemInHand().getType() == Material.getMaterial(271)) {
+				meleeAttack += 2.0D;
+			}
+			
+			//STONE_AXE
+			if (player.getItemInHand().getType() == Material.getMaterial(271)) {
+				meleeAttack += 2.0D;
+			}
+			
+			//IRON_AXE
+			if (player.getItemInHand().getType() == Material.getMaterial(258)) {
+				meleeAttack += 3.0D;
+			}
+			
+			//DIAMOND_AXE
+			if (player.getItemInHand().getType() == Material.getMaterial(279)) {
+				meleeAttack += 5.0D;
+			}
+			
+			//GOLD_AXE
+			if (player.getItemInHand().getType() == Material.GOLD_AXE){
+				meleeAttack += 3.0D;
+				magicAttack += 4.0D;
+			}
+			
+			//WOOD_SPADE
+			if (player.getItemInHand().getType() == Material.WOOD_SPADE){
+				magicAttack += 5.0D;
+			}
+			
+			//STONE_SPADE
+			if (player.getItemInHand().getType() == Material.STONE_SPADE){
+				meleeAttack += 1.0D;
+			}
+			
+			//WOOD_PICKAXE
+			if (player.getItemInHand().getType() == Material.getMaterial(270)) {
 				meleeAttack += 2.0D;
 			}
 			
@@ -358,48 +410,18 @@ public class RollInfoCommand implements CommandExecutor {
 				meleeAttack += 2.0D;
 			}
 
-			//STONE_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(272)) {
-				meleeAttack += 3.0D;
-			}
-			
 			//STONE_PICKAXE
 			if (player.getItemInHand().getType() == Material.getMaterial(274)) {
 				meleeAttack += 3.0D;
-			}
-			
-			//STONE_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(271)) {
-				meleeAttack += 3.0D;
-			}
-			
-			//IRON_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(267)) {
-				meleeAttack += 4.0D;
 			}
 			
 			//IRON_PICKAXE
 			if (player.getItemInHand().getType() == Material.getMaterial(257)) {
 				meleeAttack += 4.0D;
 			}
-
-			//IRON_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(258)) {
-				meleeAttack += 4.0D;
-			}
-			
-			//DIAMOND_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(276)) {
-				meleeAttack += 5.0D;
-			}
 			
 			//DIAMOND_PICKAXE
 			if (player.getItemInHand().getType() == Material.getMaterial(278)) {
-				meleeAttack += 5.0D;
-			}
-			
-			//DIAMOND_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(279)) {
 				meleeAttack += 5.0D;
 			}
 			
