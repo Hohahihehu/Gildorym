@@ -339,22 +339,22 @@ public class RollInfoCommand implements CommandExecutor {
 			}*/
 
 			//WOOD_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(268)) {
+			if (player.getItemInHand().getType() == Material.WOOD_SWORD {
 				meleeAttack += 1.0D;
 			}
 			
 			//STONE_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(272)) {
+			if (player.getItemInHand().getType() == Material.STONE_SWORD {
 				meleeAttack += 2.0D;
 			}
 			
 			//IRON_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(267)) {
+			if (player.getItemInHand().getType() == Material.IRON_SWORD {
 				meleeAttack += 3.0D;
 			}
 			
 			//DIAMOND_SWORD
-			if (player.getItemInHand().getType() == Material.getMaterial(276)) {
+			if (player.getItemInHand().getType() == Material.DIAMOND_SWORD) {
 				meleeAttack += 5.0D;
 			}
 			
@@ -365,22 +365,22 @@ public class RollInfoCommand implements CommandExecutor {
 			}
 			
 			//WOOD_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(271)) {
+			if (player.getItemInHand().getType() == Material.WOOD_AXE) {
 				meleeAttack += 2.0D;
 			}
 			
 			//STONE_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(271)) {
+			if (player.getItemInHand().getType() == Material.STONE_AXE) {
 				meleeAttack += 2.0D;
 			}
 			
 			//IRON_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(258)) {
+			if (player.getItemInHand().getType() == Material.IRON_AXE) {
 				meleeAttack += 3.0D;
 			}
 			
 			//DIAMOND_AXE
-			if (player.getItemInHand().getType() == Material.getMaterial(279)) {
+			if (player.getItemInHand().getType() == Material.DIAMOND_AXE {
 				meleeAttack += 5.0D;
 			}
 			
@@ -400,165 +400,199 @@ public class RollInfoCommand implements CommandExecutor {
 				meleeAttack += 1.0D;
 			}
 			
-			//WOOD_PICKAXE
-			if (player.getItemInHand().getType() == Material.getMaterial(270)) {
-				meleeAttack += 2.0D;
-			}
-			
-			//WOOD_HOE
-			if (player.getItemInHand().getType() == Material.getMaterial(290)) {
-				meleeAttack += 2.0D;
-			}
-
-			//STONE_PICKAXE
-			if (player.getItemInHand().getType() == Material.getMaterial(274)) {
+			//IRON_SPADE
+			if (player.getItemInHand().getType() == Material.IRON_SPADE){
 				meleeAttack += 3.0D;
 			}
 			
+			//DIAMOND_SPADE
+			if (player.getItemInHand().getType() == Material.DIAMOND_SPADE){
+				magicAttack += 4.0D;
+			}
+			
+			//GOLD_SPADE
+			if (player.getItemInHand().getType() == Material.GOLD_SPADE){
+				meleeAttack += 3.0D;
+				magicAttack += 2.0D;
+			}
+			
+			//WOOD_PICKAXE
+			if (player.getItemInHand().getType() == Material.WOOD_PICKAXE){
+				meleeAttack += 1.0D;
+			}
+			
+			//STONE_PICKAXE
+			if (player.getItemInHand().getType() == Material.STONE_PICKAXE) {
+				meleeAttack += 1.0D;
+			}
+			
 			//IRON_PICKAXE
-			if (player.getItemInHand().getType() == Material.getMaterial(257)) {
-				meleeAttack += 4.0D;
+			if (player.getItemInHand().getType() == Material.IRON_PICKAXE) {
+				meleeAttack += 1.0D;
 			}
 			
 			//DIAMOND_PICKAXE
-			if (player.getItemInHand().getType() == Material.getMaterial(278)) {
-				meleeAttack += 5.0D;
+			if (player.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+				meleeAttack += 2.0D;
+			}
+			
+			//GOLD_PICKAXE
+			if (player.getItemInHand().getType() == Material.GOLD_PICKAXE){
+				rangedAttack += 4.0D;
+			}
+			
+			//WOOD_HOE
+			if (player.getItemInHand().getType() == Material.WOOD_HOE) {
+				meleeAttack += 1.0D;
+				magicAttack += 3.0D;
+			}
+			
+			//STONE_HOE
+			if (player.getItemInHand().getType() == Material.STONE_HOE){
+				meleeAttack += 2.0D;
+				magicAttack += 2.0D;
+			}
+			
+			//IRON_HOE
+			if (player.getItemInHand().getType() == Material.IRON_HOE){
+				meleeAttack += 1.0D;
 			}
 			
 			//DIAMOND_HOE
-			if (player.getItemInHand().getType() == Material.getMaterial(293)) {
-				magicAttack += 5.0D;
+			if (player.getItemInHand().getType() == Material.DIAMOND_HOE) {
+				magicAttack += 3.0D;
 			}
 			
-			//DIAMOND_SPADE
-			if (player.getItemInHand().getType() == Material.getMaterial(277)) {
-				magicAttack += 5.0D;
+			//GOLD_HOE
+			if (player.getItemInHand().getType() == Material.GOLD_HOE) {
+				meleeAttack += 3.0D;
+				magicAttack += 4.0D;
 			}
 			
 			//BOW
-			if (player.getItemInHand().getType() == Material.getMaterial(261)) {
+			if (player.getItemInHand().getType() == Material.BOW) {
 				rangedAttack += 5.0D;
 			}
-
-			//STICK
-			if (player.getItemInHand().getType() == Material.getMaterial(280)) {
-				magicAttack += 2.0D;
+			
+			//CARROT_STICK
+			if (player.getItemInHand().getType() == Material.CARROT_STICK){
+				rangedAttack += 3.0D;
 			}
-
-			//BLAZE_POWDER
-			if (player.getItemInHand().getType() == Material.getMaterial(387)) {
-				magicAttack += 3.0D;
+			
+			//BLAZE_ROD
+			if (player.getItemInHand().getType() == Material.BLAZE_ROD) {
+				magicAttack += 4.0D;
 			}
-
-			//ENDER_PEARL
-			if (player.getItemInHand().getType() == Material.getMaterial(368)) {
+			
+			//GOLDEN_APPLE
+			if (player.getItemInHand().getType() == Material.GOLDEN_APPLE){
 				magicAttack += 4.0D;
 			}
 
-			//BLAZE_ROD
-			if (player.getItemInHand().getType() == Material.getMaterial(369)) {
-				magicAttack += 5.0D;
+			//ENDER_PEARL
+			if (player.getItemInHand().getType() == Material.ENDER_PEARL) {
+				magicAttack += 2.0D;
 			}
 			
-			//GOLDEN_HOE
-			if (player.getItemInHand().getType() == Material.getMaterial(294)) {
-				magicAttack += 5.0D;
+			//EYE_OF_ENDER
+			if (player.getItemInHand().getType() == Material.EYE_OF_ENDER){
+				magicAttack += 3.0D;
 			}
-
+			
 			//LEATHER_HELMET
-			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.getMaterial(298))) {
-				meleeDefence += 0.25D;
-				rangedDefence += 0.25D;
+			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.LEATHER_HELMET)) {
+				meleeDefence += 0.75D;
+				rangedDefence += 0.75D;
 			}
 
 			//LEATHER_CHESTPLATE
-			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.getMaterial(299))) {
-				meleeDefence += 1.0D;
-				rangedDefence += 1.0D;
+			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.LEATHER_CHESTPLATE)) {
+				meleeDefence += 0.75D;
+				rangedDefence += 0.75D;
 			}
 
 			//LEATHER_LEGGINGS
-			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.getMaterial(300))) {
-				meleeDefence += 0.5D;
-				rangedDefence += 0.5D;
+			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.LEATHER_LEGGINGS)) {
+				meleeDefence += 0.75D;
+				rangedDefence += 0.75D;
 			}
 
 			//LEATHER_BOOTS
-			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.getMaterial(301))) {
-				meleeDefence += 0.25D;
-				rangedDefence += 0.25D;
+			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.LEATHER_BOOTS)) {
+				meleeDefence += 0.75D;
+				rangedDefence += 0.75D;
 			}
 
 			//CHAINMAIL_HELMET
-			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.getMaterial(302))) {
-				meleeDefence += 0.5D;
-				rangedDefence += 0.5D;
+			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.CHAINMAIL_HELMET)) {
+				meleeDefence += 1.25D;
+				rangedDefence += 1.25D;
 			}
 
 			//CHAINMAIL_CHESTPLATE
-			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.getMaterial(303))) {
+			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.CHAINMAIL_CHESTPLATE)) {
 				meleeDefence += 1.25D;
 				rangedDefence += 1.25D;
 			}
 
 			//CHAINMAIL_LEGGINGS
-			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.getMaterial(304))) {
-				meleeDefence += 0.75D;
-				rangedDefence += 0.75D;
+			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.CHAINMAIL_LEGGINGS)) {
+				meleeDefence += 1.25D;
+				rangedDefence += 1.25D;
 			}
 
 			//CHAINMAIL_BOOTS
-			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.getMaterial(305))) {
-				meleeDefence += 0.5D;
-				rangedDefence += 0.5D;
+			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.CHAINMAIL_BOOTS)) {
+				meleeDefence += 1.25D;
+				rangedDefence += 1.25D;
 			}
 
 			//IRON_HELMET
-			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.getMaterial(306))) {
-				meleeDefence += 0.75D;
-				rangedDefence += 0.75D;
+			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.IRON_HELMET)) {
+				meleeDefence += 1.5D;
+				rangedDefence += 1.5D;
 			}
 
 			//IRON_CHESTPLATE
-			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.getMaterial(307))) {
+			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE)) {
 				meleeDefence += 1.5D;
 				rangedDefence += 1.5D;
 			}
 
 			//IRON_LEGGINGS
-			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.getMaterial(308))) {
-				meleeDefence += 1.0D;
-				rangedDefence += 1.0D;
+			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.IRON_LEGGINGS)) {
+				meleeDefence += 1.5D;
+				rangedDefence += 1.5D;
 			}
 
 			//IRON_BOOTS
-			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.getMaterial(309))) {
-				meleeDefence += 0.75D;
-				rangedDefence += 0.75D;
+			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.IRON_BOOTS)) {
+				meleeDefence += 1.5D;
+				rangedDefence += 1.5D;
 			}
 
 			//DIAMOND_HELMET
-			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.getMaterial(310))) {
-				meleeDefence += 1.0D;
-				rangedDefence += 1.0D;
+			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.DIAMOND_HELMET)) {
+				meleeDefence += 2.0D;
+				rangedDefence += 2.0D;
 			}
 
 			//DIAMOND_CHESTPLATE
-			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.getMaterial(311))) {
-				meleeDefence += 1.75D;
-				rangedDefence += 1.75D;
+			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.DIAMOND_CHESTPLATE)) {
+				meleeDefence += 2.0D;
+				rangedDefence += 2.0D;
 			}
 
 			//DIAMOND_LEGGINGS
-			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.getMaterial(312))) {
-				meleeDefence += 1.25D;
-				rangedDefence += 1.25D;
+			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.DIAMOND_LEGGINGS)) {
+				meleeDefence += 2.0D;
+				rangedDefence += 2.0D;
 			}
 
 			//DIAMOND_BOOTS
-			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.getMaterial(313))) {
-				meleeDefence += 1.0D;
-				rangedDefence += 1.0D;
+			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.DIAMOND_BOOTS)) {
+				meleeDefence += 2.0D;
+				rangedDefence += 2.0D;
 			}
 			
 
