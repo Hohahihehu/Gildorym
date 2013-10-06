@@ -501,14 +501,14 @@ public class RollInfoCommand implements CommandExecutor {
 			
 			//LEATHER_HELMET
 			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.LEATHER_HELMET)) {
-				meleeDefence += 0.75D;
-				rangedDefence += 0.75D;
+				meleeDefence += 0.25D;
+				rangedDefence += 0.25D;
 			}
 
 			//LEATHER_CHESTPLATE
 			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.LEATHER_CHESTPLATE)) {
-				meleeDefence += 0.75D;
-				rangedDefence += 0.75D;
+				meleeDefence += 1.75D;
+				rangedDefence += 1.75D;
 			}
 
 			//LEATHER_LEGGINGS
@@ -519,80 +519,80 @@ public class RollInfoCommand implements CommandExecutor {
 
 			//LEATHER_BOOTS
 			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.LEATHER_BOOTS)) {
-				meleeDefence += 0.75D;
-				rangedDefence += 0.75D;
+				meleeDefence += 0.25D;
+				rangedDefence += 0.25D;
 			}
 
 			//CHAINMAIL_HELMET
 			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.CHAINMAIL_HELMET)) {
-				meleeDefence += 1.25D;
-				rangedDefence += 1.25D;
+				meleeDefence += 0.5D;
+				rangedDefence += 0.5D;
 			}
 
 			//CHAINMAIL_CHESTPLATE
 			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.CHAINMAIL_CHESTPLATE)) {
-				meleeDefence += 1.25D;
-				rangedDefence += 1.25D;
+				meleeDefence += 2.25D;
+				rangedDefence += 2.25D;
 			}
 
 			//CHAINMAIL_LEGGINGS
 			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.CHAINMAIL_LEGGINGS)) {
-				meleeDefence += 1.25D;
-				rangedDefence += 1.25D;
+				meleeDefence += 1.75D;
+				rangedDefence += 1.75D;
 			}
 
 			//CHAINMAIL_BOOTS
 			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.CHAINMAIL_BOOTS)) {
-				meleeDefence += 1.25D;
-				rangedDefence += 1.25D;
+				meleeDefence += 0.5D;
+				rangedDefence += 0.5D;
 			}
 
 			//IRON_HELMET
 			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.IRON_HELMET)) {
-				meleeDefence += 1.5D;
-				rangedDefence += 1.5D;
+				meleeDefence += 0.75D;
+				rangedDefence += 0.75D;
 			}
 
 			//IRON_CHESTPLATE
 			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE)) {
-				meleeDefence += 1.5D;
-				rangedDefence += 1.5D;
+				meleeDefence += 2.5D;
+				rangedDefence += 2.5D;
 			}
 
 			//IRON_LEGGINGS
 			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.IRON_LEGGINGS)) {
-				meleeDefence += 1.5D;
-				rangedDefence += 1.5D;
+				meleeDefence += 2.0D;
+				rangedDefence += 2.0D;
 			}
 
 			//IRON_BOOTS
 			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.IRON_BOOTS)) {
-				meleeDefence += 1.5D;
-				rangedDefence += 1.5D;
+				meleeDefence += 0.75D;
+				rangedDefence += 0.75D;
 			}
 
 			//DIAMOND_HELMET
 			if ((player.getInventory().getHelmet() != null) && (player.getInventory().getHelmet().getType() == Material.DIAMOND_HELMET)) {
-				meleeDefence += 2.0D;
-				rangedDefence += 2.0D;
+				meleeDefence += 1.0D;
+				rangedDefence += 1.0D;
 			}
 
 			//DIAMOND_CHESTPLATE
 			if ((player.getInventory().getChestplate() != null) && (player.getInventory().getChestplate().getType() == Material.DIAMOND_CHESTPLATE)) {
-				meleeDefence += 2.0D;
-				rangedDefence += 2.0D;
+				meleeDefence += 3.5D;
+				rangedDefence += 3.5D;
 			}
 
 			//DIAMOND_LEGGINGS
 			if ((player.getInventory().getLeggings() != null) && (player.getInventory().getLeggings().getType() == Material.DIAMOND_LEGGINGS)) {
-				meleeDefence += 2.0D;
-				rangedDefence += 2.0D;
+				meleeDefence += 2.5D;
+				rangedDefence += 2.5D;
 			}
 
 			//DIAMOND_BOOTS
 			if ((player.getInventory().getBoots() != null) && (player.getInventory().getBoots().getType() == Material.DIAMOND_BOOTS)) {
-				meleeDefence += 2.0D;
-				rangedDefence += 2.0D;
+				meleeDefence += 1.0D;
+				rangedDefence += 1.0D;
 			}
 			
 
