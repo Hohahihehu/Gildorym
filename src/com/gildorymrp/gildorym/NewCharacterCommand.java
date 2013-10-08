@@ -27,9 +27,6 @@ public class NewCharacterCommand implements CommandExecutor {
         gildorymClasses.levels.remove(sender.getName());
         gildorymClasses.professions.remove(sender.getName());
         gildorymClasses.experience.remove(sender.getName());
-        Bukkit.getServer().dispatchCommand(sender, "f leave");
-        Bukkit.getServer().dispatchCommand(sender, "cremoveall");
-        Bukkit.getServer().dispatchCommand(sender, "lwc confirm");
         //Bukkit.getServer().dispatchCommand(sender, "gods leave");
         Bukkit.getServer().dispatchCommand(sender, "nick " + sender.getName());
         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "clearinventory " + sender.getName());
