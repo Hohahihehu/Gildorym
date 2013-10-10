@@ -1,13 +1,13 @@
 name: Gildorym
-authors: [Lucariatias, godpuppet]
+authors: [Lucariatias, godpuppet, melodichand]
 version: 2.1.8
 main: com.gildorymrp.gildorym.Gildorym
 commands:
     newcharacter:
         usage: /<command>
         description: Resets all character data
-    surname:
-        usage: /<command> [surname]
+    setname:
+        usage: /cmd [name] <name> <name> <name> <name>
         description: Sets your surname
     rollinfo:
         usage: /<command>
