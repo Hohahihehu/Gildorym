@@ -18,6 +18,12 @@ public class Gildorym extends JavaPlugin {
 		this.getCommand("roll").setExecutor(new RollCommand());
 		this.getServer().getPluginManager()
 				.registerEvents(new EntityDamageByEntityListener(this), this);
+		MetaEditorCommands mec = new MetaEditorCommands();
+		this.getCommand("renameitem").setExecutor(mec);
+		this.getCommand("setlore").setExecutor(mec);
+		this.getCommand("addlore").setExecutor(mec);
+		this.getCommand("removelore").setExecutor(mec);
+		this.getCommand("signitem").setExecutor(mec);
 	}
 
 	public void onInjury(Player player, String type,int dieSize) {		
