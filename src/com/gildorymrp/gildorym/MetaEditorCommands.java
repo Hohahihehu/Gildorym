@@ -24,11 +24,6 @@ public class MetaEditorCommands implements CommandExecutor {
 		// removelore: Removes all lore text from an item
 		// signitem: Signs the user's name onto the item
 
-		if (!sender.hasPermission("gildorym.mec")) {
-			sender.sendMessage(ChatColor.RED
-					+ "You don't have permission to use that command!");
-		}
-
 		if (cmd.getName().equalsIgnoreCase("renameitem")) {
 			if (!sender.hasPermission("gildorym.mec.renameitem")) {
 				sender.sendMessage(ChatColor.RED
@@ -200,7 +195,7 @@ public class MetaEditorCommands implements CommandExecutor {
 	}
 
 	private String mcFormat(String str) {
-		return str.replace('&', 'ï¿½');
+		return str.replace('&', '§');
 	}
 
 }

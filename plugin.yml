@@ -42,9 +42,12 @@ permissions:
     gildorym.setname.other:
         description: Allows you to set someone elses name.
         default: op
-    gildorym.mec:
-        description: Allows you to use metadata editing commands.
+    gildorym.setname.*:
+        description: Allows you to use all setname commands
         default: op
+        children:
+            gildorym.setname.title: true
+            gildorym.setname.other: true
     gildorym.mec.addlore:
         description: Allows you to add lore to items
         default: op
@@ -60,3 +63,12 @@ permissions:
     gildorym.mec.signitem:
         description: Allows you to sign items
         default: op
+    gildorym.mec.*:
+        description: Allows you to use all mec commands
+        default: op
+        children:
+            gildorym.mec.addlore: true
+            gildorym.mec.removelore: true
+            gildorym.mec.renameitem: true
+            gildorym.mec.setlore: true
+            gildorym.mec.signitem: true
