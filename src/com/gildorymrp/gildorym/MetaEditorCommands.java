@@ -23,7 +23,12 @@ public class MetaEditorCommands implements CommandExecutor {
 		// addlore: Adds additional lore text to an item after current lore
 		// removelore: Removes all lore text from an item
 		// signitem: Signs the user's name onto the item
-
+		
+		if (!sender.hasPermission("gildorym.mec")) {
+			sender.sendMessage(ChatColor.RED
+					+ "You don't have permission to use that command!");
+		}
+		
 		if (cmd.getName().equalsIgnoreCase("renameitem")) {
 			if (!(sender instanceof Player)) {
 				sender.sendMessage(ChatColor.RED
