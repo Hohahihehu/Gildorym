@@ -1,11 +1,17 @@
 package com.gildorymrp.gildorym;
 
+import java.util.Random;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class EntityDamageByEntityListener implements Listener {
 
@@ -19,122 +25,155 @@ public class EntityDamageByEntityListener implements Listener {
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
-		if ((event.getEntity() instanceof Player)) {
+		Random randomGenerator = new Random();
 
-			Player damaged = (Player) event.getEntity();
+		int fall = (int) event.getEntity().getFallDistance();
+		int roll = randomGenerator.nextInt(20) + 1;
+		
+		if (event.isCancelled() != false){
+			
+			//Injury messages
+			if ((event.getEntity() instanceof Player)) {
+	
+				Player damaged = (Player) event.getEntity();
+	
+				if ((((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D > 25.0D)
+						&& (((float) damaged.getHealth() / (float) damaged
+								.getMaxHealth()) * 100.0D <= 50.0D)) {
+					for (Player player : event.getEntity().getWorld().getPlayers()) {
+						if (event.getEntity().getLocation()
+								.distance(player.getLocation()) <= this.maxDistance
+								.intValue()) {
+							player.sendMessage(ChatColor.RED
+									+ ((Player) event.getEntity()).getDisplayName()
+									+ " appears wounded!");
+						}
+					}
+				}
+	
+				if (((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D <= 25.0D) {
+					for (Player player : event.getEntity().getWorld().getPlayers()) {
+						if (event.getEntity().getLocation()
+								.distance(player.getLocation()) <= this.maxDistance
+								.intValue()) {
+							player.sendMessage(ChatColor.RED
+									+ ((Player) event.getEntity()).getDisplayName()
+									+ " appears gravely wounded!");
+						}
+					}
+				}
+				
+				//Automated fall damage
+				if (event.getEntity() instanceof Player) {
+					if (event.getCause() == DamageCause.FALL) {
+						if (fall < 5) {
+							event.setCancelled(true);
+						} else if (fall >= 5) {
+							int noinjury;
+							int minorinjury;
+							int majorinjury;
 
-			if ((((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D > 25.0D)
-					&& (((float) damaged.getHealth() / (float) damaged
-							.getMaxHealth()) * 100.0D <= 50.0D)) {
-				for (Player player : event.getEntity().getWorld().getPlayers()) {
-					if (event.getEntity().getLocation()
-							.distance(player.getLocation()) <= this.maxDistance
-							.intValue()) {
-						player.sendMessage(ChatColor.RED
-								+ ((Player) event.getEntity()).getDisplayName()
-								+ " appears wounded!");
+							if (fall < 10) {
+								noinjury = 11;
+								minorinjury = 4;
+								majorinjury = 1;
+							} else if (fall < 14) {
+								noinjury = 15;
+								minorinjury = 8;
+								majorinjury = 1;
+							} else if (fall < 17) {
+								noinjury = 19;
+								minorinjury = 12;
+								majorinjury = 3;
+							} else if (fall < 20) {
+								noinjury = 21;
+								minorinjury = 20;
+								majorinjury = 16;
+							} else {
+								noinjury = 21;
+								minorinjury = 21;
+								majorinjury = 21;
+							}
+
+							if (roll >= noinjury) {
+								damaged
+										.sendMessage(ChatColor.BLUE
+												+ "You have fallen "
+												+ (int) Math.floor(event
+														.getEntity()
+														.getFallDistance())
+												+ " blocks, escaping without injury.");
+								event.setCancelled(true);
+								return;
+							} else if (roll >= minorinjury) {
+								plugin.onInjury(damaged, "minor", 50);
+								for (Player player : Bukkit.getServer()
+										.getOnlinePlayers()) {
+									if (player
+											.hasPermission("falldamagedetector.notify")) {
+										player.sendMessage(ChatColor.BLUE
+												+ ((Player) event.getEntity())
+														.getName()
+												+ " has just fallen "
+												+ (int) Math.floor(event
+														.getEntity()
+														.getFallDistance())
+												+ " blocks, check on them if you want.");
+									}
+								}
+								return;
+							} else if (roll >= majorinjury) {
+								plugin.onInjury(damaged, "major", 50);
+								for (Player player : Bukkit.getServer()
+										.getOnlinePlayers()) {
+									if (player
+											.hasPermission("falldamagedetector.notify")) {
+										player.sendMessage(ChatColor.BLUE
+												+ ((Player) event.getEntity())
+														.getName()
+												+ " has just fallen "
+												+ (int) Math.floor(event
+														.getEntity()
+														.getFallDistance())
+												+ " blocks, check on them if you want.");
+									}
+								}
+								return;
+							} else {
+								damaged
+										.sendMessage(ChatColor.DARK_RED
+												+ "You have fallen "
+												+ (int) Math.floor(event
+														.getEntity()
+														.getFallDistance())
+												+ " blocks, and died.");
+								((LivingEntity) event.getEntity()).addPotionEffect(
+										new PotionEffect(PotionEffectType.SLOW,
+												999999999, 10), true);
+
+								for (Player player : Bukkit.getServer()
+										.getOnlinePlayers()) {
+									if (player
+											.hasPermission("falldamagedetector.notify")) {
+										player.sendMessage(ChatColor.RED
+												+ ((Player) event.getEntity())
+														.getName()
+												+ "/"
+												+ ((Player) event.getEntity())
+														.getDisplayName()
+												+ " has just fallen "
+												+ (int) Math.floor(event
+														.getEntity()
+														.getFallDistance())
+												+ " blocks, and died.");
+									}
+								}
+								return;
+							}
+						}
 					}
 				}
 			}
-
-			if (((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D <= 25.0D) {
-				for (Player player : event.getEntity().getWorld().getPlayers()) {
-					if (event.getEntity().getLocation()
-							.distance(player.getLocation()) <= this.maxDistance
-							.intValue()) {
-						player.sendMessage(ChatColor.RED
-								+ ((Player) event.getEntity()).getDisplayName()
-								+ " appears gravely wounded!");
-					}
-				}
-			}
-			
-			
-			int armorPiece, maxDurability, damage1;
-			if (event.isCancelled() == false && event.getCause() != DamageCause.DROWNING && event.getCause() != DamageCause.FALL){
-			
-				if (damaged.getInventory().getHelmet() != null) {				
-					armorPiece = damaged.getInventory().getHelmet().getDurability();
-					maxDurability = damaged.getInventory().getHelmet().getType().getMaxDurability();
-					damage1 = (int) event.getDamage();
-					
-					//DEBUG CODE
-					//damaged.sendMessage("Item Info: Helmet; Durability: " + armorPiece + "; MaxDurability: " + maxDurability);
-					//boolean damagearmour = doDurabilityDamage(armorPiece, maxDurability, damaged);
-					//damaged.sendMessage("doDurabilityDamage returned: " + damagearmour);
-					if (plugin.doDurabilityDamage(armorPiece, maxDurability, damage1) == false) {
-						if (armorPiece > 0){
-							damaged.getInventory().getHelmet().setDurability((short) (armorPiece - 1));
-						}else{
-							return;
-						}
-					}else{
-						//damaged.sendMessage("Helmet damaged");
-					}
-				}
-				if (damaged.getInventory().getChestplate() != null) {
-					armorPiece = damaged.getInventory().getChestplate().getDurability();
-					maxDurability = damaged.getInventory().getChestplate().getType().getMaxDurability();
-					damage1 = (int) event.getDamage();
-					
-					//DEBUG CODE
-					//damaged.sendMessage("Item Info: Chestplate; Durability: " + armorPiece + "; MaxDurability: " + maxDurability);
-					//boolean damagearmour = doDurabilityDamage(armorPiece, maxDurability, damaged);
-					//damaged.sendMessage("doDurabilityDamage returned: " + damagearmour);
-					if (plugin.doDurabilityDamage(armorPiece, maxDurability, damage1) == false) {
-						if (armorPiece > 0){
-							damaged.getInventory().getChestplate().setDurability((short) (armorPiece - 1));
-						}else{
-							return;
-						}
-							
-						//DEBUG CODE
-						//damaged.sendMessage("Added 1 to durability.");
-					}else{
-						//damaged.sendMessage("Chestplate damaged");
-					}
-				}
-				if (damaged.getInventory().getLeggings() != null) {
-					armorPiece = damaged.getInventory().getLeggings().getDurability();
-					maxDurability = damaged.getInventory().getLeggings().getType().getMaxDurability();
-					damage1 = (int) event.getDamage();
-					
-					//DEBUG CODE
-					//damaged.sendMessage("Item Info: Leggings; Durability: " + armorPiece + "; MaxDurability: " + maxDurability);
-					//boolean damagearmour = doDurabilityDamage(armorPiece, maxDurability, damaged);
-					//damaged.sendMessage("doDurabilityDamage returned: " + damagearmour);
-					if (plugin.doDurabilityDamage(armorPiece, maxDurability, damage1) == false) {
-						if (armorPiece > 0){
-							damaged.getInventory().getLeggings().setDurability((short) (armorPiece - 1));
-						}else{
-							return;
-						}
-					}else{
-						//damaged.sendMessage("Leggings damaged");
-					}
-				}
-				if (damaged.getInventory().getBoots() != null) {
-					armorPiece = damaged.getInventory().getBoots().getDurability();
-					maxDurability = damaged.getInventory().getBoots().getType().getMaxDurability();
-					damage1 = (int) event.getDamage();
-					
-					//DEBUG CODE
-					//damaged.sendMessage("Item Info: Boots; Durability: " + armorPiece + "; MaxDurability: " + maxDurability);
-					//boolean damagearmour = doDurabilityDamage(armorPiece, maxDurability, damaged);
-					//damaged.sendMessage("doDurabilityDamage returned: " + damagearmour);
-					if (plugin.doDurabilityDamage(armorPiece, maxDurability, damage1) == false) {
-						if (armorPiece > 0){
-							damaged.getInventory().getBoots().setDurability((short) (armorPiece - 1));
-						}else{
-							return;
-						}
-					}else{
-						//damaged.sendMessage("Boots damaged");
-					}
-				}
-			}
-			
-			
 		}
-	}
+	}		
 }
