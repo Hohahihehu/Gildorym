@@ -42,9 +42,9 @@ permissions:
     gildorym.setname.other:
         description: Allows you to set someone elses name.
         default: op
-    gildorym.mec
+    gildorym.mec:
         description: Allows you to use metadata editing commands.
         default: op
-    gildorym.mec.signitem
+    gildorym.mec.signitem:
         description: Allows you to sign items
         default: op
