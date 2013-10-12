@@ -12,10 +12,21 @@ public class RollCommand implements CommandExecutor {
 
 	private final int MAXIMUM_DIE_SIZE = 100;
 	private final int MAXIMUM_NUMBER_OF_DICE = 10;
-
+	private Gildorym plugin;
+	
+	public RollCommand(Gildorym plugin) {
+		this.plugin = plugin;
+	}
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
+
+		if (cmd.getName().equalsIgnoreCase("dmroll")
+				&& !sender.hasPermission("gildorym.dmroll")) {
+			sender.sendMessage(ChatColor.RED
+					+ "You do not have permission to perform that command!");
+		}
 
 		int[] rollInfo;
 		// rollInfo[0] = Number of dice to roll, default 1
@@ -65,7 +76,6 @@ public class RollCommand implements CommandExecutor {
 		}
 		
 		output += rollInfo[2] + ") = " + rollTotal;
-
 		if (sender instanceof Player) {
 			// Generates human-friendly message when player runs the command
 			String message = ChatColor.BLUE + sender.getName() + ChatColor.GRAY
@@ -79,13 +89,28 @@ public class RollCommand implements CommandExecutor {
 			}
 
 			// Sends message and output to all players within 24 of sender
-			for (Player player : ((Player) sender).getWorld().getPlayers()) {
-				if (player.getLocation().distance(
-						((Player) sender).getLocation()) <= 24) {
-					player.sendMessage(message);
-					player.sendMessage(output);
+			if (cmd.getName().equalsIgnoreCase("roll")) {
+				for (Player player : ((Player) sender).getWorld().getPlayers()) {
+					if (player.getLocation().distance(
+							((Player) sender).getLocation()) <= 24) {
+						player.sendMessage(message);
+						player.sendMessage(output);
+					}
 				}
+			} else if (cmd.getName().equalsIgnoreCase("dmroll")) {
+				((Player) sender).sendMessage(message);
+				((Player) sender).sendMessage(output);
 			}
+			
+			// Sends result of roll to console.
+			String log = "Player " + ((Player) sender).getName() + " rolled " + rollInfo[0] + "d" + rollInfo[1];
+			if (rollInfo[2] > 0) {
+				log = log + "+" + rollInfo[2];
+			} else if (rollInfo[2] < 0) {
+				log = log + rollInfo[2];
+			}
+			log += " = " + rollTotal;
+			plugin.getLogger().info(log);
 		} else {
 			// Sends message to console when run by console
 			sender.sendMessage(output);
