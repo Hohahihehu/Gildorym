@@ -11,13 +11,20 @@ import org.bukkit.potion.PotionEffectType;
 public class Gildorym extends JavaPlugin {
 
 	public void onEnable() {
+		this.economy = this.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class).getProvider();
+		if (this.economy == null) {
+			this.getLogger().severe("Could not find a compatible economy, disabling!");
+			this.setEnabled(false);
+		}
+		
 		this.getCommand("newcharacter").setExecutor(new NewCharacterCommand());
 		this.getCommand("setname").setExecutor(new SetNameCommand());
 		this.getCommand("setnameother").setExecutor(new SetNameOtherCommand());
 		this.getCommand("rollinfo").setExecutor(new RollInfoCommand());
 		this.getCommand("roll").setExecutor(new RollCommand());
-		this.getServer().getPluginManager()
-				.registerEvents(new EntityDamageByEntityListener(this), this);
+		this.getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(this), this);
+		this.getServer().getPluginManager().registerEvents(new PlayerInteractListener(this), this);
+		this.getServer().getPluginManager().registerEvents(new SignChangeListener(), this);
 		MetaEditorCommands mec = new MetaEditorCommands();
 		this.getCommand("renameitem").setExecutor(mec);
 		this.getCommand("setlore").setExecutor(mec);
