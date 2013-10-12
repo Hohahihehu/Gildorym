@@ -36,33 +36,7 @@ public class EntityDamageByEntityListener implements Listener {
 			if ((event.getEntity() instanceof Player)) {
 	
 				Player damaged = (Player) event.getEntity();
-	
-				if ((((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D > 25.0D)
-						&& (((float) damaged.getHealth() / (float) damaged
-								.getMaxHealth()) * 100.0D <= 50.0D)) {
-					for (Player player : event.getEntity().getWorld().getPlayers()) {
-						if (event.getEntity().getLocation()
-								.distance(player.getLocation()) <= this.maxDistance
-								.intValue()) {
-							player.sendMessage(ChatColor.RED
-									+ ((Player) event.getEntity()).getDisplayName()
-									+ " appears wounded!");
-						}
-					}
-				}
-	
-				if (((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D <= 25.0D) {
-					for (Player player : event.getEntity().getWorld().getPlayers()) {
-						if (event.getEntity().getLocation()
-								.distance(player.getLocation()) <= this.maxDistance
-								.intValue()) {
-							player.sendMessage(ChatColor.RED
-									+ ((Player) event.getEntity()).getDisplayName()
-									+ " appears gravely wounded!");
-						}
-					}
-				}
-				
+
 				//Automated fall damage
 				if (event.getEntity() instanceof Player) {
 					if (event.getCause() == DamageCause.FALL) {
@@ -169,6 +143,31 @@ public class EntityDamageByEntityListener implements Listener {
 									}
 								}
 								return;
+							}
+						}
+					}
+						if ((((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D > 25.0D)
+							&& (((float) damaged.getHealth() / (float) damaged
+									.getMaxHealth()) * 100.0D <= 50.0D)) {
+						for (Player player : event.getEntity().getWorld().getPlayers()) {
+							if (event.getEntity().getLocation()
+									.distance(player.getLocation()) <= this.maxDistance
+									.intValue()) {
+								player.sendMessage(ChatColor.RED
+										+ ((Player) event.getEntity()).getDisplayName()
+										+ " appears wounded!");
+							}
+						}
+					}
+		
+					if (((float) damaged.getHealth() / (float) damaged.getMaxHealth()) * 100.0D <= 25.0D) {
+						for (Player player : event.getEntity().getWorld().getPlayers()) {
+							if (event.getEntity().getLocation()
+									.distance(player.getLocation()) <= this.maxDistance
+									.intValue()) {
+								player.sendMessage(ChatColor.RED
+										+ ((Player) event.getEntity()).getDisplayName()
+										+ " appears gravely wounded!");
 							}
 						}
 					}
