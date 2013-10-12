@@ -33,6 +33,9 @@ commands:
         usage: /<command>
         description: Signs the user's name onto the item in hand.
 permissions:
+    gildorym.falldamagedetector:
+        description: Allows you to be notified of fall distances
+        default: op
     gildorym.setname:
         description: Allows you to set your name.
         default: op
