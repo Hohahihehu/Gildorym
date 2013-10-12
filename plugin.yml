@@ -26,13 +26,25 @@ commands:
     renameitem:
         usage: /<command> [name]
         description: Changes the display name of the item in hand.
-    setlore: 
+    setlore:
         usage: /<command> [loretext]
         description: Sets the lore text of the item in hand.
     signitem:
         usage: /<command>
         description: Signs the user's name onto the item in hand.
+    radiusemote:
+        description: Sends an emote to a certain radius. Use && for colours.
+        usage: /<command> [radius] [message]
 permissions:
+    gildorym.createboatsigns:
+        description: Allows the user to creat boat signs.
+        default: op
+    gildorym.radiusemote:
+        description: Allows using of radius emotes.
+        default: op
+    gildorym.falldamagealert:
+        description: Allows you to be notified of fall distances
+        default: op
     gildorym.setname:
         description: Allows you to set your name.
         default: op
