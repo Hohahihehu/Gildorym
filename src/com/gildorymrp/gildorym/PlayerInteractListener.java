@@ -1,4 +1,4 @@
-package me.lucariatias.plugins.boatsigns;
+package com.gildorymrp.gildorym;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,9 +14,9 @@ import org.bukkit.potion.PotionEffectType;
 
 public class PlayerInteractListener implements Listener {
 
-	private BoatSigns plugin;
+	private Gildorym plugin;
 
-	public PlayerInteractListener(BoatSigns plugin) {
+	public PlayerInteractListener(Gildorym plugin) {
 		this.plugin = plugin;
 	}
 
