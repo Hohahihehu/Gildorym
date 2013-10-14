@@ -290,10 +290,12 @@ public class RollInfoCommand implements CommandExecutor {
 			case WOOD_HOE:
 				meleeAttack += 1.0D;
 				magicAttack += 3.0D;
+				break;
 			// Melee Attack +2; Magic Attack +2
 			case STONE_HOE:
 				meleeAttack += 2.0D;
 				magicAttack += 2.0D;
+				break;
 			// Melee Attack +2; Magic Attack +3
 			case GOLD_SWORD:
 				meleeAttack += 2.0D;
